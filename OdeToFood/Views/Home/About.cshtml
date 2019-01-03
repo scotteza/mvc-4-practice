@@ -1,4 +1,5 @@
-﻿@{
+﻿@model OdeToFood.Models.AboutModel
+@{
     ViewBag.Title = "About";
 }
 
@@ -8,17 +9,8 @@
 </hgroup>
 
 <article>
-    <p>
-        Use this area to provide additional information.
-    </p>
-
-    <p>
-        Use this area to provide additional information.
-    </p>
-
-    <p>
-        Use this area to provide additional information.
-    </p>
+    <div>Name is: @Model.Name</div>
+    <div>Location is: @Model.Location</div>
 </article>
 
 <aside>
