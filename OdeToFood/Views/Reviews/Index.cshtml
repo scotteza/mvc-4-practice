@@ -4,9 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>The Latest Reviews</h2>
+@section featured
+{
+    We are showing the latest @Model.Count() reviews
+}
 
-We are showing the latest @Model.Count() reviews
+<h2>The Latest Reviews</h2>
 
 @foreach (var item in Model)
 {
@@ -14,6 +17,10 @@ We are showing the latest @Model.Count() reviews
         <h4>@item.Name</h4>
         <span>@item.Rating</span>
         <p>@item.City, @item.Country</p>
+
+        <span class="right">
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+        </span>
     </div>
 }
 
