@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using OdeToFood.Models;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using OdeToFood.Models;
 
 namespace OdeToFood.Controllers
 {
@@ -13,7 +10,18 @@ namespace OdeToFood.Controllers
 
         public ActionResult Index()
         {
-            var model = _db.Restaurants.ToList();
+            var model =
+                _db.Restaurants
+                .OrderByDescending(restaurant => restaurant.Reviews.Average(review => review.Rating))
+                .Select(r => new RestaurantListViewModel
+                    {
+                    Id = r.Id,
+                    Name = r.Name,
+                    City = r.City,
+                    Country = r.Country,
+                    CountOfReviews = r.Reviews.Count()
+                })
+                .ToList();
 
             return View(model);
         }
