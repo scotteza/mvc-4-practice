@@ -8,11 +8,13 @@ namespace OdeToFood.Controllers
     {
         OdeToFoodDb _db = new OdeToFoodDb();
 
-        public ActionResult Index()
+        public ActionResult Index(string searchTerm = null)
         {
             var model =
                 _db.Restaurants
                     .OrderByDescending(restaurant => restaurant.Reviews.Average(review => review.Rating))
+                    .Where(r => searchTerm == null || r.Name.StartsWith(searchTerm))
+                    .Take(10)
                     .Select(r => new RestaurantListViewModel
                     {
                         Id = r.Id,
