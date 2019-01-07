@@ -15,28 +15,13 @@ namespace OdeToFood.Controllers
 
         //
         // GET: /Restaurant/
-
         public ActionResult Index()
         {
             return View(db.Restaurants.ToList());
         }
 
         //
-        // GET: /Restaurant/Details/5
-
-        public ActionResult Details(int id = 0)
-        {
-            Restaurant restaurant = db.Restaurants.Find(id);
-            if (restaurant == null)
-            {
-                return HttpNotFound();
-            }
-            return View(restaurant);
-        }
-
-        //
         // GET: /Restaurant/Create
-
         public ActionResult Create()
         {
             return View();
@@ -44,7 +29,6 @@ namespace OdeToFood.Controllers
 
         //
         // POST: /Restaurant/Create
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Restaurant restaurant)
@@ -61,7 +45,6 @@ namespace OdeToFood.Controllers
 
         //
         // GET: /Restaurant/Edit/5
-
         public ActionResult Edit(int id = 0)
         {
             Restaurant restaurant = db.Restaurants.Find(id);
@@ -74,7 +57,6 @@ namespace OdeToFood.Controllers
 
         //
         // POST: /Restaurant/Edit/5
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Restaurant restaurant)
@@ -90,7 +72,6 @@ namespace OdeToFood.Controllers
 
         //
         // GET: /Restaurant/Delete/5
-
         public ActionResult Delete(int id = 0)
         {
             Restaurant restaurant = db.Restaurants.Find(id);
@@ -103,7 +84,6 @@ namespace OdeToFood.Controllers
 
         //
         // POST: /Restaurant/Delete/5
-
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
